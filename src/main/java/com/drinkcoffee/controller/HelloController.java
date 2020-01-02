@@ -1,5 +1,7 @@
 package com.drinkcoffee.controller;
 
+import com.drinkcoffee.entity.Member;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,10 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
  * To change this template use File | Settings | File Templates.
  * Description:
  */
+@Slf4j
 @RestController
 public class HelloController {
-    @RequestMapping
+
+    @RequestMapping("/hello")
     public String hello(){
         return "Hello World";
+    }
+    @RequestMapping("/testMember")
+    public Member testMember(){
+        Member member = Member.builder().id(170218032333L).name("Skyzc").gender(1).build();
+        log.info("测试一下" + member);
+        return member;
     }
 }

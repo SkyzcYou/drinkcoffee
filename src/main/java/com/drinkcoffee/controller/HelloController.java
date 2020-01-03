@@ -2,6 +2,8 @@ package com.drinkcoffee.controller;
 
 import com.drinkcoffee.entity.Member;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Description:
  */
 @Slf4j
-@RestController
+@Controller
 public class HelloController {
 
     @RequestMapping("/hello")
@@ -26,5 +28,10 @@ public class HelloController {
         Member member = Member.builder().id(170218032333L).name("Skyzc").gender(1).build();
         log.info("测试一下" + member);
         return member;
+    }
+    @RequestMapping("/")
+    public String thy(Model model){
+        model.addAttribute("name","游正材");
+        return "index";
     }
 }
